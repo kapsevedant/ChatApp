@@ -7,8 +7,12 @@ const app = express();
 const server = http.createServer(app);
 
 const io = new Server(server, {
+    // cors: {
+    //     origin: ['http://localhost:4200'],
+    //     methods: ['GET', 'POST']
+    // }
     cors: {
-        origin: ['http://localhost:4200'],
+        origin: ['https://chat-app-frontend-m1cw.vercel.app'],
         methods: ['GET', 'POST']
     }
 });
