@@ -9,13 +9,19 @@ import { app, server, getOnlineUsers } from './socket/socket.js';
 
 dotenv.config({})
 
-app.use(cors());
+const corsOptions = {
+    origin: "https://chat-app-frontend-m1cw.vercel.app",  // ✅ replace with your real frontend URL
+    credentials: true, // ✅ allows cookies and headers like Authorization
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser())
 
-app.get('',(req,res)=>{
-    res.send(`<h1>Welcome to chat app</h1>`)
-})
+// app.get('',(req,res)=>{
+//     res.send(`<h1>Welcome to chat app</h1>`)
+// })
+
 // ✅ Corrected route path
 app.use("/api/v1/user", userRoutes)
 app.use("/api/v1/message", messageRoutes)
